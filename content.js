@@ -1,4 +1,5 @@
 console.log("Running the injection script")
+
 function inject() {
   // Handle on Change function for approveRadio button
   approveRadio = Array.from(document.getElementsByName("pull_request_review[event]")).filter((elem) => {
