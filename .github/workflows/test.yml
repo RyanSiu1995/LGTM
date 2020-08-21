@@ -16,3 +16,6 @@ jobs:
           node-version: '12'
       - run: npm install
       - run: npm test
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
