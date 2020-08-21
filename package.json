@@ -1,0 +1,29 @@
+{
+  "name": "lgtm",
+  "version": "0.1.0",
+  "description": "Apply LGTM when you approve a GitHub PR",
+  "main": "content.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanSiu1995/LGTM.git"
+  },
+  "author": "Ryan Siu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RyanSiu1995/LGTM/issues"
+  },
+  "homepage": "https://github.com/RyanSiu1995/LGTM#readme",
+  "dependencies": {
+    "eslint": "^7.7.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "mocha": "^8.1.1"
+  }
+}
