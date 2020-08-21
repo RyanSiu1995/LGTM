@@ -16,7 +16,7 @@ describe('content.js', function() {
     await driver.get('https://github.com/login');
     await driver.findElement(By.css('#login_field')).sendKeys(username)
     await driver.findElement(By.css('#password')).sendKeys(password + Key.ENTER)
-    await driver.wait(until.urlIs('https://github.com/'), 2000)
+    await driver.wait(until.urlIs('https://github.com/'), 10000)
   })
 
   it('should fill the LGTM in PR page after pressing the approve', async () => {
@@ -30,20 +30,20 @@ describe('content.js', function() {
     script = fs.readFileSync(`${process.cwd()}/content.js`, 'utf-8')
     await driver.executeScript(script);
     // Add the timeout to let the script loaded
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => setTimeout(r, 10000));
 
     // Test case
     await hyperlinks[targetIndex].click();
-    await driver.wait(until.elementLocated(By.css('summary.btn.js-reviews-toggle')), 2000);
+    await driver.wait(until.elementLocated(By.css('summary.btn.js-reviews-toggle')), 10000);
     await driver.findElement(By.css('summary.btn.js-reviews-toggle')).click();
-    await driver.wait(until.elementLocated(By.name('pull_request_review[event]')), 2000);
+    await driver.wait(until.elementLocated(By.name('pull_request_review[event]')), 10000);
     let radioButtons = await driver.findElements(By.name('pull_request_review[event]'));
     proms = radioButtons.map((elem) => 
       elem.getAttribute('value')
     );
     targetIndex = (await Promise.all(proms)).findIndex((e) => e === 'approve');
     await radioButtons[targetIndex].click();
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => setTimeout(r, 10000));
     let comment = await driver.findElement(By.name('pull_request_review[body]')).getAttribute('value');
     assert.equal(comment, "LGTM");
   })
