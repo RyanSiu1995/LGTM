@@ -3,17 +3,16 @@ on: [push, pull_request]
 
 jobs:
   test:
-    env:
-      SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
     name: testing
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Start selenoid
-        uses: Xotabu4/selenoid-github-action@v1
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
+      - run: |-
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb
       - run: npm install
       - run: npm test
         env:
