@@ -1,3 +1,4 @@
+console.debug("Running the injection script")
 // Handle on Change function for approveRadio button
 approveRadio = Array.from(document.getElementsByName("pull_request_review[event]")).filter((elem) => {
   return elem.value === "approve"
@@ -21,3 +22,4 @@ Array.from(document.getElementsByName("pull_request_review[event]")).filter((ele
 }).forEach((elem) => {
   elem.onchange = uncheckLGTM
 });
+console.debug("Finished the injection script")

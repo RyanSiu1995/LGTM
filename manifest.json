@@ -3,18 +3,14 @@
   "name": "LGTM for GitHub!",
   "version": "0.1.0",
 
-  "default_locale": "en",
   "description": "Auto-inject LGTM onto the comment block!",
 
   "author": "Ryan Siu",
-  "permissions": [
-    "activeTab"
-  ],
-  "run_at": "document_idle",
   "content_scripts": [
     {
-      "matches": ["https://github.com/*/pull/*/files"],
-      "js": ["content.js"]
+      "matches": ["https://github.com/*/*/pull/*/files"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
     }
   ]
 }
