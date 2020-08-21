@@ -8,7 +8,7 @@
   "author": "Ryan Siu",
   "content_scripts": [
     {
-      "matches": ["https://github.com/*/*/pull/*/files"],
+      "matches": ["https://github.com/*"],
       "js": ["content.js"],
       "run_at": "document_idle"
     }
