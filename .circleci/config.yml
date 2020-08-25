@@ -6,9 +6,10 @@ jobs:
   test:
     executor: node/default
     steps:
+      - checkout
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - node/install
+      - run: npm install
       - run: npm test
 workflows:
   node-tests:
