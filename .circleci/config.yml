@@ -1,14 +1,16 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
-  browser-tools: circleci/browser-tools@1.0.1
 jobs:
   test:
-    executor: node/default
+    docker:
+      - image: circleci/node:stretch-browsers
     steps:
       - checkout
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      - run: |-
+          curl -O http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar
+      - run: 
+          command: |-
+            java -jar -Dwebdriver.gecko.driver=./geckodriver selenium-server-standalone-3.0.1.jar -log selenium.log
+          background: true
       - run: npm install
       - run: npm test
 workflows:
